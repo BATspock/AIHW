@@ -1,2 +1,2 @@
 # AIHW
-CSCI 561 homewords
+CSCI 561 homeworks
