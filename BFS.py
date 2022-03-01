@@ -20,3 +20,29 @@ def prepareForBFS(l, goal):
 
         return nodeInfo, parent
 
+def BFS(self, nodeInfo,visited, parent, beg, goal, dim):
+        
+        if (beg not in nodeInfo) : return "FAIL"
+        
+
+        q.put(beg)
+        visited[beg] = 1
+
+        while(not q.empty()):
+
+            node = q.get()
+
+            if (node == goal):
+                return parent
+
+            for _ in nodeInfo[node]:
+
+                newNode = tuple(np.array(node) + np.array(act[_-1]))
+                if newNode in nodeInfo:
+                    if visited[newNode] == 0:
+                        visited[newNode] = 1
+                        parent[newNode] = node
+                        q.put(newNode)
+
+        return ("FAIL")
+
