@@ -56,3 +56,24 @@ def BFS(nodeInfo, parent, beg, goal):
 
 
         return ("FAIL")
+
+
+def BFSCost(parent, goal):
+        costList = []
+        node = goal
+        
+        while (parent[node]!=node):
+            #print(node)
+            costList.append(str(node[0]) + " " + str(node[1]) + " "+ str(node[2]) + " " + str(1))
+            node = parent[node]
+        
+        #print(costList)
+        costList.append(str(beg[0]) + " " + str(beg[1]) + " " + str(beg[2]) + " " + str(0))
+        costList = costList[::-1]
+        #costList.insert(0, (list(beg)+list(str(0))))
+
+        textfile = open("output.txt", "w")
+        textfile.write(str(len(costList)-1)+"\n"+str(len(costList))+"\n")
+        for c in costList:
+            textfile.write(c + "\n")
+        textfile.close()
