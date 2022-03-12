@@ -259,10 +259,6 @@ def bestMove(board, prevBoard, myPlayer, depth):
         return action[0]
     return "PASS"
 
-
-
-t, pb, cb = readInput(5, 'testing.txt')
-
-print(t, cb , pb)
+t, pb, cb = readInput(5, 'input.txt')
 
 writeOutput(bestMove(cb, pb, t, 2))
