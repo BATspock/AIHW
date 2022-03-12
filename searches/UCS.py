@@ -19,3 +19,12 @@ def prepareForUCS(l, goal):
         #visited[goal] = 0
         
     return nodeInfo, nodeInfoCost#, visited#, parent
+
+
+
+def _check(l, c):
+    if len(l) == 0:
+        return False
+    if l[0][0] < c:
+        return True
+    return False
