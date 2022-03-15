@@ -92,3 +92,35 @@ def UCS(nodeInfo, nodeInfoCost, beg, goal):
         return "FAIL"
     
     return nodeInfoCost
+
+def UCSoutput(d, beg, goal):
+    path = []
+    
+    textfile = open("output.txt", "w")
+    textfile.writelines(str(d[goal][0])+"\n")
+    
+    node = goal
+    
+    while (not d[node][1] == d[node][2]):
+        var = list(d[node][1])
+        var.append(d[node][3])
+        path.append(var)
+        node = d[node][2]
+        
+    var = list(d[beg][1])
+    var.append(d[beg][3])
+    path.append(var)
+    path = path[::-1]
+    textfile.writelines(str(len(path))+"\n")
+    
+    for i in range(len(path)):
+        for j in range(len(path[i])):
+            if j == 3:
+                textfile.writelines(str(path[i][j]))
+            else:
+                textfile.writelines(str(path[i][j]) + " ")
+        if i != len(path)-1:
+            textfile.writelines("\n")
+    
+    textfile.close()
+
