@@ -261,4 +261,4 @@ def bestMove(board, prevBoard, myPlayer, depth):
 
 t, pb, cb = readInput(5, 'input.txt')
 
-writeOutput(bestMove(cb, pb, t, 2))
+writeOutput(bestMove(cb, pb, t, 4))
