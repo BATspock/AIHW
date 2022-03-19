@@ -93,3 +93,35 @@ def Astar(nodeInfo, nodeInfoCost, beg, goal):
         return "FAIL"
     
     return nodeInfoCost
+
+def AstartOutput(d, beg, goal):
+    path = []
+    
+    textfile = open("output.txt", "w")
+    textfile.writelines(str(d[goal][0])+"\n")
+    
+    node = goal
+    
+    while (not d[node][2] == d[node][3]):
+        var = list(d[node][2])
+        var.append(d[node][4])
+        path.append(var)
+        node = d[node][3]
+        
+    var = list(d[beg][2])
+    var.append(d[beg][4])
+    path.append(var)
+    path = path[::-1]
+    textfile.writelines(str(len(path))+"\n")
+    
+    for i in range(len(path)):
+        for j in range(len(path[i])):
+            if j == 3:
+                textfile.writelines(str(path[i][j]))
+            else:
+                textfile.writelines(str(path[i][j]) + " ")
+        if i != len(path)-1:
+            textfile.writelines("\n")
+    
+    textfile.close()
+ 
