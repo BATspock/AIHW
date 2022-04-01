@@ -88,7 +88,7 @@ def libertyPresent(i, j, board, myPlayer)->set:
                 liberty.add(n)
     return liberty
 
-def makeMove(i, j, board, myPlayer):#->(list(list()), float, float):
+def makeMove(i, j, board, myPlayer)->(list(list()), float, float):
     temp = deepcopy(board)
     temp[i][j] = myPlayer
 
@@ -129,7 +129,7 @@ def heuristics(t, board)->float:
     return (10*wStones) - (10*bStones) + (2*vulB) - (1.5*vulW)
 
 
-def getPossibleMoves(board, prevBoard, myPlayer):#->(list or None):
+def getPossibleMoves(board, prevBoard, myPlayer)->(list or None):
     
     moves = set()
     movesToCheck = list()
@@ -248,7 +248,7 @@ def MIN(board, prevBoard, myPlayer, depth, alpha, beta)->(float, list()):
         if minV <= alpha:
             return minV, minAct
         if minV < beta:
-            alpha = minV
+            beta = minV
             
     return minV, minAct
 
@@ -259,6 +259,6 @@ def bestMove(board, prevBoard, myPlayer, depth):
         return action[0]
     return "PASS"
 
-t, pb, cb = readInput(5, 'input.txt')
+t, pb, cb = readInput(5, 'inputtest.txt')
 
 writeOutput(bestMove(cb, pb, t, 4))
