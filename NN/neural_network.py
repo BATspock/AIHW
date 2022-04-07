@@ -94,12 +94,13 @@ class MLP:
     # backward pass
     def backward_pass(self, X, Y, cache):
         m = X.shape[1]
-        
+        print(m.shape)
         # error at last layer
         dZ3 = cache['A3'] - Y
         
         # gradients at last layer
         m3 = cache["A2"].shape[1]
+        print(m3.shape)
         dW3 = np.dot(dZ3, cache["A2"].T) / m
         db3 = np.sum(dZ3, axis=1, keepdims=True) / m
         
@@ -109,6 +110,7 @@ class MLP:
         
         # gradients of middle layer
         m2 = cache['A1'].shape[1]
+        print(m2.shape)
         dW2 = np.dot(dZ2, cache['A1'].T) / m
         db2 = np.sum(dZ2, axis=1, keepdims=True) / m
         
@@ -118,6 +120,7 @@ class MLP:
         
         # gradients of first layer
         m1 = X.shape[1]
+        print(m1.shape)
         dW1 = np.dot(dZ1, X.T) / m
         db1 = np.sum(dZ1, axis=1, keepdims=True) / m
     
